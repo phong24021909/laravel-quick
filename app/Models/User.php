@@ -50,5 +50,5 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = ['is_admin'];
+    // protected $guarded = ['is_admin'];
 }

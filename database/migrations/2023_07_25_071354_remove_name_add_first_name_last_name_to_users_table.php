@@ -15,9 +15,6 @@ class RemoveNameAddFirstNameLastNameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
-        });
-
-        Schema::table('users', function (Blueprint $table) {
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
         });
@@ -32,10 +29,6 @@ class RemoveNameAddFirstNameLastNameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['first_name', 'last_name']);
-        });
-
-        // Thêm lại cột name
-        Schema::table('users', function (Blueprint $table) {
             $table->string('name');
         });
     }
