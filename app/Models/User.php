@@ -51,4 +51,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     // protected $guarded = ['is_admin'];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
