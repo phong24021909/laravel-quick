@@ -7,6 +7,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <a href="{{ route('change', ['locale' => 'en']) }}">English</a>
+                &nbsp;
+        <a href="{{ route('change', ['locale' => 'vi']) }}">Tiếng Việt</a>
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
