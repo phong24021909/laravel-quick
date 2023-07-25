@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use App\Scopes\ActiveUserScope;
 
 class User extends Authenticatable
 {
@@ -56,4 +57,26 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
+
+        //Accessors
+        public function getFullNameAttribute()
+        {
+            return $this->first_name . ' ' . $this->last_name;
+        }
+    
+        //Mutators
+        public function setUsernameAttribute($value)
+        {
+            $this->attributes['username'] = Str::slug($value);
+        }
+    
+        public function scopeAdmins($query)
+        {
+            return $query->where('is_admin', true);
+        }
+    
+        protected static function booted()
+        {
+            static::addGlobalScope(new ActiveUserScope);
+        }
 }
