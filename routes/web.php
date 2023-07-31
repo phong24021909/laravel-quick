@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('users', UserController::class);
+
+Route::group(['prefix' => 'tasks'], function () {
+    Route::get('/', [TaskController::class, 'index']);
+    Route::get('/create', [TaskController::class, 'create']);
+    Route::post('/', [TaskController::class, 'store']);
+    Route::get('/{task}', [TaskController::class, 'show']);
+    Route::get('/{task}/edit', [TaskController::class, 'edit']);
+    Route::put('/{task}', [TaskController::class, 'update']);
+    Route::delete('/{task}', [TaskController::class, 'destroy']);
+});
