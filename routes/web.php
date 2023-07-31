@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('users', UserController::class);
+
+Route::middleware('check.admin')->group(function () {
+    Route::resource('users', UserController::class);
+});
 
 Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', [TaskController::class, 'index']);
