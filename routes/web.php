@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware('check.admin')->group(function () {
     Route::resource('users', UserController::class);
 });
