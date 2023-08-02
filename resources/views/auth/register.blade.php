@@ -1,3 +1,7 @@
+<a href="{{ route('change', ['locale' => 'en']) }}">English</a>
+                &nbsp;
+<a href="{{ route('change', ['locale' => 'vi']) }}">Tiếng Việt</a>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
